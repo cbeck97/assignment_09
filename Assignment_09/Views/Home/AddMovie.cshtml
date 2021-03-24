@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Add Movie";
+}
+
+@model Assignment_09.Models.Movie
+
+@*This page has fields for the user to enter in all of the necessary information for each
+Movie. Once the add button has been pressed the movie is added to the database*@
+
+<div>
+    <h1>Add a Movie to the List</h1>
+    <br />
+
+    <form asp-action="AddMovie" method="post">
+        <div class="form-group row">
+            <label asp-for="Category" class="col-sm-2 col-form-label">Category:</label>
+            <div class="col-sm-10">
+                <input asp-for="Category" class="form-control" placeholder="Category" />
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Title" class="col-sm-2 col-form-label">Title:</label>
+            <div class="col-sm-10">
+                <input asp-for="Title" class="form-control" placeholder="Title" />
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Year" class="col-sm-2 col-form-label">Year:</label>
+            <div class="col-sm-10">
+                <input asp-for="Year" class="form-control" placeholder="Year" />
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Director" class="col-sm-2 col-form-label">Director:</label>
+            <div class="col-sm-10">
+                <input asp-for="Director" class="form-control" placeholder="Director" />
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Rating" class="col-sm-2 col-form-label">Rating:</label>
+            <div class="col-sm-10">
+                <select asp-for="Rating" class="form-control">
+                    <option value="">Select Rating</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Edited" class="col-sm-2 col-form-label">Edited:</label>
+            <div class="col-sm-10">
+                <select asp-for="Edited" class="form-control">
+                    <option value="false">Select Option</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Lent" class="col-sm-2 col-form-label">Lent to:</label>
+            <div class="col-sm-10">
+                <input asp-for="Lent" class="form-control" placeholder="Lent to" />
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label asp-for="Notes" class="col-sm-2 col-form-label">Notes:</label>
+            <div class="col-sm-10">
+                <textarea asp-for="Notes" rows="4" maxlength="25" class="form-control"></textarea>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+    </form>
+
+    <div asp-validation-summary="All"></div>
+</div>
+

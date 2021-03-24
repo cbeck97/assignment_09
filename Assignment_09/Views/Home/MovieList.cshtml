@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+
+@model MovieListViewModel
+
+@*This page lists out all of the movies that are currently in the database. It also adds
+an edit button and a delete button to each record. This enables the user to use CRUD operations
+If the movie is Independence Day then it is not displayed on the movie list page*@
+
+<div>
+    <h1>Movie List</h1>
+    <br />
+
+    <table class="table table-striped">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Director</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edited</th>
+                <th scope="col">Lent To</th>
+                <th scope="col">Notes</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var x in Model.Movies)
+            {
+                @if (x.Title != "Independence Day")
+                {
+                    <tr>
+                        <td>@x.Category</td>
+                        <td>@x.Title</td>
+                        <td>@x.Year</td>
+                        <td>@x.Director</td>
+                        <td>@x.Rating</td>
+                        <td>@x.Edited</td>
+                        <td>@x.Lent</td>
+                        <td>@x.Notes</td>
+                        <td>
+                            <form asp-action="MovieList" method="post">
+                                <input type="hidden" name="id" value="@x.MovieID" />
+                                <button class="btn btn-outline-dark" type="submit"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="DeleteMovie">
+                                <input type="hidden" name="id" value="@x.MovieID" />
+                                <button class="btn btn-outline-dark" type="submit"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
